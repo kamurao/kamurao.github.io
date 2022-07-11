@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+  pre{
+    display:none;
+  }
+</style>
   <head>
     <title>Chart.js Line Chart Template by handsondataviz.org</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +26,13 @@
     <div>
       <canvas id="chart-container" style="height: 400px; width: 100%"></canvas>
     </div>
-    
-    <p style="font-family: Helvetica; color: #333; padding: 1em 2em; font-size: 12px">
-      Source: CT Department of Education
-      <br>
-      <a href="https://github.com/HandsOnDataViz/chartjs-line">View data and code</a>,
-      created by <a href="https://handsondataviz.org/">HandsOnDataViz</a>
-      with <a href="https://www.chartjs.org/">Chart.js</a>
-    </p>
-
+    <center>
+    <select name="selectedItem" id="selectedItem">
+      <option value="Item name">Item name</option>
+    </select>
+    </center>
     <script src="script.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
   </body>
 
