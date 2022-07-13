@@ -171,6 +171,7 @@ $(document).ready(function() {
     for(var i = 0; i < data.length; i++) {
         itemNameList.push(data[i].itemName)
     }
+    itemNameList.sort();
     console.log(itemNameList)
         var uniqueItemNames = [...new Set(itemNameList)];
         console.log(uniqueItemNames)
