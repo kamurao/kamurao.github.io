@@ -29,6 +29,15 @@ $(document).ready(function() {
     var tenLargestDifference = new Array(10).fill(0)
     var tenLargestCostForOne = new Array(10).fill(0)
     var tenLargest = 0;
+    
+    var tenOneLargest10 = new Array(10).fill(0)
+    var tenOneLargestName = new Array(10).fill(0)
+    var tenOneLargestPrice1 = new Array(10).fill(0)
+    var tenOneLargestPrice10 = new Array(10).fill(0)
+    var tenOneLargestPrice100 = new Array(10).fill(0)
+    var tenOneLargestDifference = new Array(10).fill(0)
+    var tenOneLargestCostForOne = new Array(10).fill(0)
+    var tenOneLargest = 0;
 
     for(var i = 0; i < data.length; i++) {
         if(data[i].date === today) {
@@ -69,6 +78,22 @@ $(document).ready(function() {
                     }
                 }
             }
+            if(data[i].price100 != 0 && data[i].price10 != 0) {
+                var costForTen = parseInt((data[i].price100/10))
+                var priceDifference = parseInt(data[i].price10) - costForTen
+                for(var y = 0; y < tenOneLargest10.length; y++) {
+                    if(priceDifference > largest10[y]) {
+                        tenOneLargest10[y] = priceDifference
+                        tenOneLargestName[y] = data[i].itemName
+                        tenOneLargestPrice1[y] = data[i].price1
+                        tenOneLargestPrice10[y] = data[i].price10
+                        tenOneLargestPrice100[y] = data[i].price100
+                        tenOneLargestDifference[y] = priceDifference
+                        tenOneLargestCostForOne[y] = costForOne
+                        break;
+                    }
+                }
+            }
         }
     }
     for(var i = 0; i < largestName.length; i++) {
@@ -90,6 +115,7 @@ $(document).ready(function() {
         opt = largestDifference[i]
         addData(el, opt, select)
     }
+
     var tenTable = document.getElementById("tenItemTable");
     for(var i = 0; i < tenLargestName.length; i++) {
         var tr = document.createElement("tr");
@@ -110,6 +136,27 @@ $(document).ready(function() {
         opt = tenLargestDifference[i]
         addData(el, opt, tenTable)
     }
+
+    var tenOneTable = document.getElementById("tenOneItemTable");
+        for(var i = 0; i < tenLargestName.length; i++) {
+            var tr = document.createElement("tr");
+            tenOneTable.appendChild(tr);
+            var opt = tenOneLargestName[i];
+            var el = document.createElement("td");
+            el.textContent = opt;
+            el.value = opt;
+            tenOneTable.appendChild(el);
+            opt = tenOneLargestPrice1[i]
+            addData(el, opt, tenOneTable)
+            opt = tenOneLargestPrice10[i]
+            addData(el, opt, tenOneTable)
+            opt = tenOneLargestPrice100[i]
+            addData(el, opt, tenOneTable)
+            opt = tenOneLargestCostForOne[i]
+            addData(el, opt, tenOneTable)
+            opt = tenOneLargestDifference[i]
+            addData(el, opt, tenOneTable)
+        }
     });
 
 });
