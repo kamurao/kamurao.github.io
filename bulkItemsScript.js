@@ -5,7 +5,7 @@ $(document).ready(function() {
     var yyyy = today.getFullYear();
 
     //today = dd + '-' + mm + '-' + yyyy;
-    today = "15-07-2022";
+    today = "16-07-2022";
 
     console.log(today)
 
